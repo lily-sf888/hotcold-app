@@ -5,13 +5,16 @@ const initialState = {
 }
 
 const reducers = (state = initialState, action) => {
+
   switch (action.type) {
+
     case 'GUESS_COUNTER':
       return Object.assign({}, state, { count: state.count + 1 })
+
     case 'RANDOM_NUMBER':
       return Object.assign({}, state, {randomnumber:
       Math.floor(Math.random() * 100) + 1})
-    //actions needed:
+
     default:
       return state
   }

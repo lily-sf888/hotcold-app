@@ -15,7 +15,7 @@ export const guessCounter = () => {
 //user guess actions
 export const userGuess = (guess) => {
   return {
-    type: 'USER_GUESS'
+    type: 'USER_GUESS',
     guess: guess
   }
 }
