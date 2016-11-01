@@ -1,11 +1,11 @@
 //when new game starts
-export const newGame = () => {
-  return {
-    type: 'NEW_GAME'
-  }
-}
+// export const newGame = () => {
+//   return {
+//     type: 'NEW_GAME'
+//   }
+// }
 
-//difference between user guess and actual number
+//events for when submit button is clicked
 export const onSubmit = (userGuess) => {
   return {
     type: 'ON_SUBMIT',
@@ -13,13 +13,13 @@ export const onSubmit = (userGuess) => {
   }
 }
 
-//feedback if user's guess is ice cold, cold, warm and hot
- export const Feedback = (feedback) => {
-   return {
-     type: 'FEEDBACK',
-     feedback: feedback
-   }
- }
+// //feedback if user's guess is ice cold, cold, warm and hot
+//  export const Feedback = (feedback) => {
+//    return {
+//      type: 'FEEDBACK',
+//      feedback: feedback
+//    }
+//  }
 //
 // // show the numbers user has guessed so far
 // export const showNumbers = (numbers) => {

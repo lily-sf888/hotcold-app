@@ -1,16 +1,11 @@
 import React from 'react'
 import {onSubmit} from '../actions/index'
-import { connect } from 'react-redux'
-//when user clicks on submit, get value of user input, calculate difference
-//between user input and secret random number, update user guess count,
-//display number user guessed in the ul
-//call function to display message 'hot, cold etc.'
 
 
 const Input = React.createClass ({
   onSubmit: function (event) {
     event.preventDefault();
-    alert(this.refs.userGuess.value)
+    //alert(this.refs.userGuess.value)
     var userGuess = this.refs.userGuess.value;
     this.props.dispatch(onSubmit(userGuess));
   },
