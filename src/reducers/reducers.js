@@ -1,23 +1,29 @@
-//import {onSubmit} from '../actions/index'
+var actions = require('../actions/index');
 
 //setting initial state for the reducers
-const initialState = {
+var initialState = {
   userGuess: ''
+};
+console.log(initialState);
 
-}
+var reducers = function(state = initialState, action) {
+  console.log(action);
+  switch(action.type) {
 
-const reducers = (state = initialState, action) => {
-
-  switch (action.type) {
-
-    case 'ON_SUBMIT':
-      // we want to update the state with new user guess
-      let userGuess = action.userGuess
+    case actions.ON_SUBMIT:
+      var userGuess = action.userGuess
       console.log(userGuess)
+
       return Object.assign({}, state, {
         userGuess: userGuess
-      })
+      });
+      break;
+      default: console.log('error');
+  }
+  return state;
+};
 
+exports.reducers = reducers;
 
     /*
     case 'RANDOM_NUMBER':
@@ -26,10 +32,10 @@ const reducers = (state = initialState, action) => {
       */
 
 
-      default:
-      return state
-
-  }
-}
-
-export default reducers
+//       default:
+//       return state
+//
+//   }
+// }
+//
+// export default reducers

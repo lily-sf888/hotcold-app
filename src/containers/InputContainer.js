@@ -1,11 +1,11 @@
-import { connect } from 'react-redux'
-import InputView from '../components/InputView'
+var connect = require('react-redux').connect;
+var InputView = require('../components/InputView');
 
-//describing how different parts of the state should be stored inside props
-const mapStateToProps = (state, props) => {
+var mapStateToProps = function(state, props) {
   return {
     userGuess: state.userGuess
   }
-}
+};
 
-export default connect(mapStateToProps)(InputView)
+ var Container = connect(mapStateToProps)(InputView);
+ module.exports = Container;
