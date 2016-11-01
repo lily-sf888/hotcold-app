@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
+import InputContainer from './containers/InputContainer';
 import CounterContainer from './containers/CounterContainer';
-import RandomContainer from './containers/RandomContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <CounterContainer />
-      <RandomContainer />
-
+        <InputContainer />
+        <CounterContainer />
       </div>
     );
   }

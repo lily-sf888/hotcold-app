@@ -1,10 +1,11 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
+
+//generating secret number, need to calculate difference between secret
+//number and user guess
 
 const Random = ({ randomnumber, randomNumber }) => (
   <div>
-    <Button bsStyle="success" onClick={ randomNumber }>Click me</Button>
-    <p>Random number is: { randomnumber } </p>
+      <p>{ randomnumber }</p>
   </div>
 )
 
