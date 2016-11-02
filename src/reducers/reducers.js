@@ -1,3 +1,4 @@
+//reducers respond to the actions and modify the state
 var actions = require('../actions/index');
 
 //setting initial state for the reducers

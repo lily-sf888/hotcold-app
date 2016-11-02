@@ -1,3 +1,4 @@
+//stateful component rendering the input component
 var React = require('react');
 var onSubmit = require('../actions/index');
 
