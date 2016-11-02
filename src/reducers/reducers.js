@@ -30,12 +30,3 @@ exports.reducers = reducers;
       return Object.assign({}, state, {randomnumber:
       Math.floor(Math.random() * 100) + 1})
       */
-
-
-//       default:
-//       return state
-//
-//   }
-// }
-//
-// export default reducers
