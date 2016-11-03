@@ -5,10 +5,12 @@
 //user input value, update user guess count, show list of guessed numbers
 //call function for user feedback
 var ON_SUBMIT = 'ON_SUBMIT';
-var onSubmit = function(userGuess) {
+var onSubmit = function(userGuess, randomNum, feedback) {
   return {
     type: 'ON_SUBMIT',
-    userGuess: userGuess
+    userGuess: userGuess,
+    randomNum: randomNum,
+    feedback: feedback
   }
 };
 
