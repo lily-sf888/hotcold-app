@@ -20,24 +20,24 @@ var reducers = function(state = initialState, action) {
       var difference = difference;
       difference = Math.abs(randomNum - userGuess);
 
-      //get feedback to users how close their guess is
-      var getFeedback = function(feedback, difference) {
-        if(difference > 50) {
-  			     feedback = "ice cold";
-  			}else if(difference > 30 && difference < 50 ) {
-  			     feedback = "cold";
-  			}else if(difference > 20 && difference < 30) {
-  			     feedback = "warm";
-  			}else if(difference > 10 && difference < 20) {
-  			     feedback ="hot";
-  			}else if(difference > 1 && difference < 10) {
-  			     feedback = "very hot";
-  			}else if(difference === 0) {
-  				feedback = "Congrats, you guessed the right number!";
-  			}
-        return feedback;
-        }
-        var feedback = getFeedback(feedback, difference);
+    //get feedback to users how close their guess is
+    var getFeedback = function(feedback, difference) {
+      if(difference > 50) {
+			     feedback = "ice cold";
+			}else if(difference > 30 && difference < 50 ) {
+			     feedback = "cold";
+			}else if(difference > 20 && difference < 30) {
+			     feedback = "warm";
+			}else if(difference > 10 && difference < 20) {
+			     feedback ="hot";
+			}else if(difference > 1 && difference < 10) {
+			     feedback = "very hot";
+			}else if(difference === 0) {
+				feedback = "Congrats, you guessed the right number!";
+			}
+      return feedback;
+      }
+      var feedback = getFeedback(feedback, difference);
 
       var newState = Object.assign({}, state, {
         userGuess: userGuess,
