@@ -1,9 +1,11 @@
-import React from 'react'
+var React = require('react');
 
-const Counter = ({ count, guessCounter }) => (
-  <div>
-      <p>Guess #<span id="count">{ count }</span>!</p>
-  </div>
-)
+var Counter = function() {
+  return (
+    <div>
+      <p>Guess #<span id="count">{  }</span>!</p>
+    </div>
+  )
+}
 
-export default Counter
+module.exports = Counter;
