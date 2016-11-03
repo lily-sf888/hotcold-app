@@ -3,17 +3,10 @@ var actions = require('../actions/index');
 
 //setting initial state for the reducers
 var initialState = {
-  userGuess: '',
   allGuesses: [],
-  feedback: '',
-  randomNum: Math.floor(Math.random() * 100),
-  guessAttempts: 0,
-  difference: 0
-
+  randomNum: Math.floor(Math.random() * 100)
 };
 console.log(initialState);
-
-
 
 var reducers = function(state = initialState, action) {
 
