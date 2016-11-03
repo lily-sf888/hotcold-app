@@ -5,7 +5,7 @@ var actions = require('../actions/index');
 var initialState = {
   userGuess: '',
   allGuesses: [],
-  feedback: 'hello',
+  feedback: '',
   randomNum: Math.floor(Math.random() * 100),
   guessAttempts: 0,
   difference: 0
@@ -26,10 +26,13 @@ var reducers = function(state = initialState, action) {
       var feedback = state.feedback;
       var difference = state.difference;
       difference = Math.abs(randomNum - userGuess);
-      //feedback = 'bye';
+    
       // switch statement to say how close to guess
-       var getFeedback = function() {
-         //
+       var getFeedback = function(feedback, difference) {
+         var feedback = feedback;
+         var difference = difference;
+         console.log(feedback);
+         console.log(difference);
           switch(difference){
 
                 case difference > 50:
@@ -50,11 +53,10 @@ var reducers = function(state = initialState, action) {
                 case difference === 0:
                   feedback = 'Congrats, you guessed the right number';
                }
-        //       return feedback;
-              console.log(feedback);
-              console.log(difference);
-       }
-       getFeedback(feedback, difference);
+               return feedback;
+      }
+       getFeedback(difference, feedback);
+
 
       var newState = Object.assign({}, state, {
         userGuess: userGuess,
