@@ -1,4 +1,4 @@
-//reducers respond to the actions and modify the state
+
 var actions = require('../actions/index');
 
 //setting initial state for the reducers
@@ -7,11 +7,11 @@ var initialState = {
   randomNum: Math.floor(Math.random() * 100)
 };
 console.log(initialState);
-
+//reducers respond to the actions and modify the state
 var reducers = function(state = initialState, action) {
 
   switch(action.type) {
-
+    //events that happen when user clicks the guess button
     case actions.ON_SUBMIT:
       var userGuess = action.userGuess;
       userGuess = parseInt(userGuess);
