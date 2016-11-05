@@ -1,12 +1,9 @@
 var React = require('react');
 var actions = require('../actions/index');
-//rendering how many guesses the user has made so far
-var Counter = React.createClass({
+
+var NewGame = React.createClass({
   render: function() {
-    //accessing array allGuesses through props, using map to render li elements
-    var guesses = this.props.allGuesses.map(function(num) {
-      return <li key={num.toString()}>{num}</li>
-    })
+    
     return (
       <div>
         <p>Guess #<span id="count">{this.props.allGuesses.length}</span>!</p>
@@ -18,4 +15,4 @@ var Counter = React.createClass({
   }
 });
 
-module.exports = Counter;
+module.exports = NewGame;

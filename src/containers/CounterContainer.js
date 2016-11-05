@@ -1,19 +1,13 @@
-import { connect } from 'react-redux'
-import CounterView from '../components/CounterView'
-import { guessCounter } from '../actions'
-//describing how different parts of the state should be stored inside props
-const mapStateToProps = (state) => {
-  return {
-    count: state.count
-  }
-}
+var connect = require('react-redux').connect;
+var CounterView = require('../components/CounterView');
 
-const mapDispatchToProps = (dispatch) => {
+//accessing the current state of allGuesses, and setting it up how it should be
+//stored in props
+var mapStateToProps = function(state) {
   return {
-    guessCounter: () => {
-      dispatch(guessCounter())
-    }
+    allGuesses: state.allGuesses
   }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CounterView)
+};
+//making allGuesses available through props in CounterView
+var Container = connect(mapStateToProps)(CounterView);
+module.exports = Container;

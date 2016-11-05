@@ -1,5 +1,6 @@
 var React = require('react');
 var InputContainer = require('../containers/InputContainer');
+var CounterContainer = require('../containers/CounterContainer');
 
 //rendering the different components of our app here
 var App = React.createClass({
@@ -7,6 +8,7 @@ var App = React.createClass({
     return (
       <div className='App'>
         <InputContainer />
+        <CounterContainer />
       </div>
     );
   }

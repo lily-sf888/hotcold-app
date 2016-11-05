@@ -12,4 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
     </Provider>,
     document.getElementById('root')
   );
+
+  // ReactDOM.render (
+  //   <Provider store={store}>
+  //     <App />
+  //   </Provider>,
+  //   document.getElementById('new-game')
+  // );
+
 });

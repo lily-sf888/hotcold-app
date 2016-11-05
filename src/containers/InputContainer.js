@@ -1,14 +1,14 @@
-//setting up props for state, with connect we can access the dispatch
-//method in InputView through props
-
 var connect = require('react-redux').connect;
 var InputView = require('../components/InputView');
 
-var mapStateToProps = function(state, props) {
+//accessing current state of userGuess and feedback, and setting them up how
+//they should be stored in props
+var mapStateToProps = function(state) {
   return {
-    userGuess: state.userGuess
+    userGuess: state.userGuess,
+    feedback: state.feedback
   }
 };
-
- var Container = connect(mapStateToProps)(InputView);
- module.exports = Container;
+//making userGuess and feedback available through props in InputView
+var Container = connect(mapStateToProps)(InputView);
+module.exports = Container;

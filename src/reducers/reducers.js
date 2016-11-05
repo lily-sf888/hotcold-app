@@ -1,12 +1,13 @@
-
 var actions = require('../actions/index');
 
 //setting initial state for the reducers
 var initialState = {
   allGuesses: [],
-  randomNum: Math.floor(Math.random() * 100)
+  randomNum: Math.floor(Math.random() * 100),
+  userGuess: 0,
+  feedback: 'Make your guess!',
+  guessAttempts: 0
 };
-console.log(initialState);
 //reducers respond to the actions and modify the state
 var reducers = function(state = initialState, action) {
 
@@ -21,8 +22,10 @@ var reducers = function(state = initialState, action) {
       difference = Math.abs(randomNum - userGuess);
 
     //get feedback to users how close their guess is
-    var getFeedback = function(feedback, difference) {
-      if(difference > 50) {
+    var getFeedback = function(feedback, difference, userGuess) {
+      if((isNaN(userGuess)) || userGuess > 100) {
+        alert('Please type in a number between 1 and 100');
+      }else if(difference > 50) {
 			     feedback = "ice cold";
 			}else if(difference > 30 && difference < 50 ) {
 			     feedback = "cold";
@@ -37,15 +40,23 @@ var reducers = function(state = initialState, action) {
 			}
       return feedback;
       }
-      var feedback = getFeedback(feedback, difference);
+      var feedback = getFeedback(feedback, difference, userGuess);
 
-      var newState = Object.assign({}, state, {
+        Object.assign({}, state, {
         userGuess: userGuess,
         allGuesses: state.allGuesses.concat(userGuess),
         guessAttempts: state.allGuesses.length + 1,
-        feedback: feedback,
-        difference: difference
+        feedback: feedback
       });
+      break;
+    case actions.NEW_GAME:
+      var newState = Object.assign({}, state, {
+        randomNum: Math.floor(Math.random() * 100),
+        allGuesses: [],
+        guessAttempts: 0,
+        feedback: 'Make your guess'
+      })
+
       console.log(newState)
       return newState
   }
