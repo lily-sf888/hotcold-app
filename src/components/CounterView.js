@@ -1,5 +1,5 @@
 var React = require('react');
-var actions = require('../actions/index');
+
 //rendering how many guesses the user has made so far
 var Counter = React.createClass({
   render: function() {

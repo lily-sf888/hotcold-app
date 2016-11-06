@@ -48,17 +48,16 @@ var reducers = function(state = initialState, action) {
         guessAttempts: state.allGuesses.length + 1,
         feedback: feedback
       });
+
       break;
-    case actions.NEW_GAME:
-      var newState = Object.assign({}, state, {
+     case actions.NEW_GAME:
+        Object.assign({}, state, {
         randomNum: Math.floor(Math.random() * 100),
         allGuesses: [],
         guessAttempts: 0,
         feedback: 'Make your guess'
       })
 
-      console.log(newState)
-      return newState
   }
   return state;
 };
