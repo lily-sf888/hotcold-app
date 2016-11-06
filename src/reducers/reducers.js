@@ -14,6 +14,7 @@ var reducers = function(state = initialState, action) {
   switch(action.type) {
     //events that happen when user clicks the guess button
     case actions.ON_SUBMIT:
+
       var userGuess = action.userGuess;
       userGuess = parseInt(userGuess);
       var randomNum = state.randomNum;
@@ -42,23 +43,24 @@ var reducers = function(state = initialState, action) {
       }
       var feedback = getFeedback(feedback, difference, userGuess);
 
-        Object.assign({}, state, {
-        userGuess: userGuess,
-        allGuesses: state.allGuesses.concat(userGuess),
-        guessAttempts: state.allGuesses.length + 1,
-        feedback: feedback
-      });
+        return Object.assign({}, state, {
+          userGuess: userGuess,
+          allGuesses: state.allGuesses.concat(userGuess),
+          guessAttempts: state.allGuesses.length + 1,
+          feedback: feedback
+        });
 
       break;
-     case actions.NEW_GAME:
-        Object.assign({}, state, {
-        randomNum: Math.floor(Math.random() * 100),
-        allGuesses: [],
-        guessAttempts: 0,
-        feedback: 'Make your guess'
-      })
 
-  }
+     case actions.NEW_GAME:
+
+        return Object.assign({}, state, {
+          randomNum: Math.floor(Math.random() * 100),
+          allGuesses: [],
+          guessAttempts: 0,
+          feedback: 'Make your guess'
+        });
+     }
   return state;
 };
 
