@@ -21,7 +21,7 @@ var reducers = function(state = initialState, action) {
       var feedback = feedback;
       var difference = difference;
       difference = Math.abs(randomNum - userGuess);
-      console.log(randomNum);
+      
     //get feedback to users how close their guess is
     var getFeedback = function(feedback, difference, userGuess) {
       if((isNaN(userGuess)) || userGuess > 100) {
