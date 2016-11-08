@@ -68,38 +68,16 @@ var reducers = function(state = initialState, action) {
       break;
       //not sure what actions to perform
       case actions.FETCH_FEWEST_GUESSES:
-        // make trip to server
-        var fetchFewestGuesses = function() {
-          return function(dispatch) {
-          var url = 'https://localhost:3000/fewest-guesses';
-          return fetch(url).then(function(response) {
-            if (response.status < 200 || response.status >= 300) {
-              var error = new Error(response.statusText)
-              error.response = response
-              throw error;
-            }
-            return response;
-          })
-          .then(function(response) {
-            return response.json();
-          })
-          .then(function(data) {
-            var fewestGuesses = data.fewestGuesses;
-            return dispatch(
-              fetchFewestGuesses(fewestGuesses)
-            );
-          })
-          .catch(function(error) {
-            return dispatch(
-              fetchError(error)
-            );
-          });
-        }
-      };
+
+        var fewestGuesses = state.allGuesses.length;
 
         return Object.assign({}, state, {
-          fewestGuesses: 99
+          fewestGuesses: fewestGuesses
         });
+
+      case actions.FETCH_ERROR:
+
+        console.log('error');
     }
   return state;
 };

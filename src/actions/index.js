@@ -39,6 +39,34 @@ var fetchError = function(error) {
     };
 };
 
+var fetchDescription = function() {
+  return function(dispatch) {
+  var url = '/fewest-guesses';
+  return fetch(url).then(function(response) {
+    if (response.status < 200 || response.status >= 300) {
+      var error = new Error(response.statusText)
+      error.response = response
+      throw error;
+    }
+    return response;
+  })
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(data) {
+    var fewestGuesses = data.fewestGuesses;
+    return dispatch(
+      fetchFewestGuesses(fewestGuesses)
+    );
+  })
+  .catch(function(error) {
+    return dispatch(
+      fetchError(error)
+    );
+  });
+ }
+};
+
 
 exports.ON_SUBMIT = ON_SUBMIT;
 exports.onSubmit = onSubmit;
@@ -48,3 +76,4 @@ exports.FETCH_FEWEST_GUESSES = FETCH_FEWEST_GUESSES;
 exports.fetchFewestGuesses = fetchFewestGuesses;
 exports.FETCH_ERROR = FETCH_ERROR;
 exports.fetchError = fetchError;
+exports.fetchDescription = fetchDescription;

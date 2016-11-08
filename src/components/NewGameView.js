@@ -3,7 +3,7 @@ var actions = require('../actions/index');
 
 var NewGame = React.createClass({
   componentDidMount: function() {
-      this.props.dispatch(actions.fetchFewestGuesses());
+      this.props.dispatch(actions.fetchDescription(this.props.fewestGuesses));
   },
   onClick: function() {
     this.props.dispatch(actions.newGame());
