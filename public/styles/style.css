@@ -332,3 +332,7 @@ ul.guessBox li {
 	height: 4em;
 	text-align: center;
 }
+
+.guess {
+  color: white;
+}

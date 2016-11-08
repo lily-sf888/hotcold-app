@@ -14,11 +14,11 @@ using Redux which is divided into different parts mainly consisting of actions,
 reducers, react components and the store.
 
 Actions are objects which contain a type and the action's payload.  In our app
-there are two main actions, when the user clicks on the guess submit button and
+there are two main actions, when the user clicks on the guess submit button, and
 when the user clicks on the new game button. These two click events trigger
 a number of things that happen in the game.
 
-Our actions are then passed to the reducer which is responsible to to modify
+Our actions are then passed to the reducer which is responsible to modify
 the state. Since states should not be mutated, we use the `Object.assign` method
 which clones the action object and modifies the state without having to change
 the original state object.
@@ -30,7 +30,8 @@ with the `Provider` component.  When the `Provider` is in place, components can
 access parts of the store including the dispatch method.
 
 In order for our components to have access to the current states, we use the
-`mapStateToProps` function to turn our states into props which can be accessed
-by our components.
+`mapStateToProps` function to turn our states into props which then can be
+accessed by our components.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
