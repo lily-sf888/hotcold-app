@@ -77,7 +77,7 @@ var reducers = function(state = initialState, action) {
 
       case actions.FETCH_ERROR:
 
-        console.log('error');
+        console.log('error from reducer');
     }
   return state;
 };

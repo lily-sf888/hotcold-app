@@ -13,6 +13,6 @@ app.post('/fewest-guesses', function (req, res) {
   res.send('POST request')
 })
 
-app.listen();
+app.listen(process.env.PORT || 8080, process.env.IP);
 
 console.log('Listening');
