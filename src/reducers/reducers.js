@@ -44,8 +44,8 @@ var reducers = function(state = initialState, action) {
 
 
 				feedback = "Congrats, you guessed the right number!";
-         fewestGuesses = state.allGuesses.length + 1;
-         return dispatch(actions.FETCH_FEWEST_GUESSES(fewestGuesses));
+         var fewestGuesses = state.allGuesses.length + 1;
+
 			}
         return feedback;
 
@@ -61,7 +61,7 @@ var reducers = function(state = initialState, action) {
 
         });
 
-      break;
+        break;
 
      case actions.NEW_GAME:
 
@@ -74,11 +74,9 @@ var reducers = function(state = initialState, action) {
 
         });
 
-      break;
+        break;
 
       case actions.FETCH_FEWEST_GUESSES:
-
-
 
         return Object.assign({}, state, {
           fewestGuesses: state.fewestGuesses
@@ -87,8 +85,15 @@ var reducers = function(state = initialState, action) {
       case actions.FETCH_ERROR:
 
         console.log('error from reducer');
+
+        break;
+
+      default:
+
+        return state;
+
     }
-  return state;
+    return state;
 };
 
 
