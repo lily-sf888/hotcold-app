@@ -44,25 +44,21 @@ var reducers = function(state = initialState, action) {
 
 
 				feedback = "Congrats, you guessed the right number!";
-        fewestGuesses = state.allGuesses.length + 1;
+         fewestGuesses = state.allGuesses.length + 1;
+         return dispatch(actions.FETCH_FEWEST_GUESSES(fewestGuesses));
 			}
-        return [feedback, fewestGuesses];
+        return feedback;
 
       }
-      var data = getFeedback(feedback, difference, userGuess);
+      var feedback = getFeedback(feedback, difference, userGuess);
 
-      var fewestGuesses =  data[1];
-      var feedback = data[0];
-        console.log(feedback);
-      //console.log('current feedback', feedback[1]);
 
-        console.log('newest', fewestGuesses);
         return Object.assign({}, state, {
           userGuess: userGuess,
           allGuesses: state.allGuesses.concat(userGuess),
           guessAttempts: state.allGuesses.length + 1,
           feedback: feedback,
-          fewestGuesses: fewestGuesses
+
         });
 
       break;
@@ -82,8 +78,10 @@ var reducers = function(state = initialState, action) {
 
       case actions.FETCH_FEWEST_GUESSES:
 
+
+
         return Object.assign({}, state, {
-          fewestGuesses: fewestGuesses
+          fewestGuesses: state.fewestGuesses
         });
 
       case actions.FETCH_ERROR:

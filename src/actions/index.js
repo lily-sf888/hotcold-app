@@ -39,7 +39,7 @@ var fetchError = function(error) {
     };
 };
 
-var fetchDescription = function() {
+var fetchGuesses = function() {
   return function(dispatch) {
   var url = 'http://localhost:8080/fewest-guesses';
   return fetch(url)
@@ -54,7 +54,7 @@ var fetchDescription = function() {
   })
 
   .then(function(response) {
-  
+
     return response.json();
   })
 
@@ -83,4 +83,4 @@ exports.FETCH_FEWEST_GUESSES = FETCH_FEWEST_GUESSES;
 exports.fetchFewestGuesses = fetchFewestGuesses;
 exports.FETCH_ERROR = FETCH_ERROR;
 exports.fetchError = fetchError;
-exports.fetchDescription = fetchDescription;
+exports.fetchGuesses = fetchGuesses;
