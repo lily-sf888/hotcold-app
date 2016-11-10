@@ -41,8 +41,10 @@ var fetchError = function(error) {
 
 var fetchDescription = function() {
   return function(dispatch) {
-  var url = '/fewest-guesses';
-  return fetch(url).then(function(response) {
+  var url = 'http://localhost:8080/fewest-guesses';
+  return fetch(url)
+
+  .then(function(response) {
     if (response.status < 200 || response.status >= 300) {
       var error = new Error(response.statusText)
       error.response = response
@@ -50,15 +52,20 @@ var fetchDescription = function() {
     }
     return response;
   })
+
   .then(function(response) {
+  
     return response.json();
   })
+
   .then(function(data) {
+    console.log("DATA", data)
     var fewestGuesses = data.fewestGuesses;
     return dispatch(
       fetchFewestGuesses(fewestGuesses)
     );
   })
+
   .catch(function(error) {
     return dispatch(
       fetchError(error)

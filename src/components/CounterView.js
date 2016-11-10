@@ -9,6 +9,7 @@ var Counter = React.createClass({
       return <li key={num.toString()}>{num}</li>
       }
     })
+    
     return (
       <div>
         <p>Guess #<span id="count">{this.props.allGuesses.length}</span>!</p>

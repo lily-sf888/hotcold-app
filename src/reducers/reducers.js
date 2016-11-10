@@ -24,7 +24,7 @@ var reducers = function(state = initialState, action) {
       var feedback = feedback;
       var difference = difference;
       difference = Math.abs(randomNum - userGuess);
-
+      console.log(randomNum);
     //get feedback to users how close their guess is
     var getFeedback = function(feedback, difference, userGuess) {
       if((isNaN(userGuess)) || userGuess > 100) {
@@ -41,35 +41,46 @@ var reducers = function(state = initialState, action) {
 			     feedback = "very hot";
 			}else if(difference === 0) {
         //  trigger the lowest guess action
-				feedback = "Congrats, you guessed the right number!";
-			}
-      return feedback;
-      }
-      var feedback = getFeedback(feedback, difference, userGuess);
 
+
+				feedback = "Congrats, you guessed the right number!";
+        fewestGuesses = state.allGuesses.length + 1;
+			}
+        return [feedback, fewestGuesses];
+
+      }
+      var data = getFeedback(feedback, difference, userGuess);
+
+      var fewestGuesses =  data[1];
+      var feedback = data[0];
+        console.log(feedback);
+      //console.log('current feedback', feedback[1]);
+
+        console.log('newest', fewestGuesses);
         return Object.assign({}, state, {
           userGuess: userGuess,
           allGuesses: state.allGuesses.concat(userGuess),
           guessAttempts: state.allGuesses.length + 1,
-          feedback: feedback
+          feedback: feedback,
+          fewestGuesses: fewestGuesses
         });
 
       break;
 
      case actions.NEW_GAME:
 
+
         return Object.assign({}, state, {
           randomNum: Math.floor(Math.random() * 100),
           allGuesses: [],
           guessAttempts: 0,
           feedback: 'Make your guess!'
+
         });
 
       break;
-      //not sure what actions to perform
-      case actions.FETCH_FEWEST_GUESSES:
 
-        var fewestGuesses = state.allGuesses.length;
+      case actions.FETCH_FEWEST_GUESSES:
 
         return Object.assign({}, state, {
           fewestGuesses: fewestGuesses
