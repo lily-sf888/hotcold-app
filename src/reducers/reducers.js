@@ -44,21 +44,23 @@ var reducers = function(state = initialState, action) {
 
 
 				feedback = "Congrats, you guessed the right number!";
-         var fewestGuesses = state.allGuesses.length + 1;
+          var fewestGuesses = state.allGuesses.length + 1;
 
 			}
-        return feedback;
+        return [feedback, fewestGuesses];
 
       }
-      var feedback = getFeedback(feedback, difference, userGuess);
+      var data = getFeedback(feedback, difference, userGuess);
+      var feedback = data[0];
+      var fewestGuesses = data[1];
 
-
+console.log('data:', feedback, fewestGuesses)
         return Object.assign({}, state, {
           userGuess: userGuess,
           allGuesses: state.allGuesses.concat(userGuess),
           guessAttempts: state.allGuesses.length + 1,
           feedback: feedback,
-
+          fewestGuesses: fewestGuesses
         });
 
         break;

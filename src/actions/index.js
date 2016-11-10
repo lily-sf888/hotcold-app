@@ -41,7 +41,10 @@ var fetchError = function(error) {
 
 var fetchGuesses = function() {
   return function(dispatch) {
-  var url = 'http://localhost:8080/fewest-guesses';
+  //var url = 'http://localhost:8080/fewest-guesses';
+  var url = new URL('http://localhost:8080/fewest-guesses'),
+  params = {fewestGuesses: 88}
+  Object.keys(params).forEach(function(key) {url.searchParams.append(key, params[key])})
   return fetch(url)
 
   .then(function(response) {

@@ -9,7 +9,8 @@ app.use(cors());
 app.get('/fewest-guesses', function (req, res) {
   // compare # of guesses with lowest
   // send back whatever number is lowest + feedback
-  console.log(req);
+
+
   res.json({lowest: lowest});
 })
 
