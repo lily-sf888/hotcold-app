@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var path = require('path');
 var cors = require('cors');
+var bodyParser = require('body-parser');
 var lowest = 99;
 
 app.use(cors());
@@ -9,9 +10,9 @@ app.use(cors());
 app.get('/fewest-guesses', function (req, res) {
   // compare # of guesses with lowest
   // send back whatever number is lowest + feedback
+console.log(req.url);
 
-
-  res.json({lowest: lowest});
+  //res.json({lowest: lowest});
 })
 
 app.post('/fewest-guesses', function (req, res) {

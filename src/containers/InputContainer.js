@@ -6,7 +6,9 @@ var InputView = require('../components/InputView');
 var mapStateToProps = function(state) {
   return {
     userGuess: state.userGuess,
-    feedback: state.feedback
+    feedback: state.feedback,
+    guessedCorrectly: state.guessedCorrectly,
+    fewestGuesses: state.fewestGuesses
   }
 };
 //making userGuess and feedback available through props in InputView

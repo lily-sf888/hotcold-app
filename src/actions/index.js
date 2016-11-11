@@ -3,13 +3,14 @@
 var isomorphicFetch = require('isomorphic-fetch');
 
 var ON_SUBMIT = 'ON_SUBMIT';
-var onSubmit = function(userGuess, guessAttempts, feedback, allGuesses) {
+var onSubmit = function(userGuess, guessAttempts, feedback, allGuesses, guessedCorrectly ) {
   return {
     type: 'ON_SUBMIT',
     userGuess: userGuess,
     guessAttempts: guessAttempts,
     feedback: feedback,
-    allGuesses: allGuesses
+    allGuesses: allGuesses,
+    guessedCorrectly: guessedCorrectly
   }
 };
 
@@ -20,6 +21,7 @@ var newGame = function(guessAttempts, feedback, allGuesses) {
     guessAttempts: guessAttempts,
     feedback: feedback,
     allGuesses: allGuesses
+
   }
 };
 //action for getting the user with the fewest guesses

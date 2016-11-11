@@ -6,6 +6,7 @@ var NewGameView = require('../components/NewGameView');
 var mapStateToProps = function(state) {
   return {
     fewestGuesses: state.fewestGuesses
+
   }
 };
 

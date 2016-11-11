@@ -9,7 +9,8 @@ var initialState = {
   userGuess: 0,
   feedback: 'Make your guess!',
   guessAttempts: 0,
-  fewestGuesses: 0
+  fewestGuesses: 0,
+  guessedCorrectly: false
 };
 //reducers respond to the actions and modify the state
 var reducers = function(state = initialState, action) {
@@ -45,22 +46,24 @@ var reducers = function(state = initialState, action) {
 
 				feedback = "Congrats, you guessed the right number!";
           var fewestGuesses = state.allGuesses.length + 1;
-
+          var guessedCorrectly = true;
 			}
-        return [feedback, fewestGuesses];
+        return [feedback, fewestGuesses, guessedCorrectly];
 
       }
       var data = getFeedback(feedback, difference, userGuess);
       var feedback = data[0];
       var fewestGuesses = data[1];
+      var guessedCorrectly = data[2];
 
-console.log('data:', feedback, fewestGuesses)
+console.log('data:', feedback, fewestGuesses, guessedCorrectly)
         return Object.assign({}, state, {
           userGuess: userGuess,
           allGuesses: state.allGuesses.concat(userGuess),
           guessAttempts: state.allGuesses.length + 1,
           feedback: feedback,
-          fewestGuesses: fewestGuesses
+          fewestGuesses: fewestGuesses,
+          guessedCorrectly: guessedCorrectly
         });
 
         break;
