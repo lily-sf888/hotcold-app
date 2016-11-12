@@ -3,22 +3,27 @@ var app = express();
 var path = require('path');
 var cors = require('cors');
 var bodyParser = require('body-parser');
-var lowest = 99;
+var fewestGuesses = 99;
 
 app.use(cors());
 
 app.get('/fewest-guesses', function (req, res) {
-  // compare # of guesses with lowest
-  // send back whatever number is lowest + feedback
-var fewestGuesses = req.query.fewestGuesses;
-console.log(fewestGuesses)
-
-
-  res.json({lowest: lowest});
+  console.log('from server get',fewestGuesses)
+  fewestGuesses = fewestGuesses;
+  console.log('second from server get', fewestGuesses)
+  res.json({fewestGuesses: fewestGuesses});
 })
 
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+
+app.use(bodyParser.json());
+
 app.post('/fewest-guesses', function (req, res) {
-  res.send('POST request')
+
+  fewestGuesses = req.body.fewestGuesses;
+  res.json({fewestGuesses: fewestGuesses});
 })
 
 app.listen(process.env.PORT || 8080, process.env.IP);

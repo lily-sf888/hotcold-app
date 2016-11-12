@@ -8,7 +8,8 @@ var mapStateToProps = function(state) {
     userGuess: state.userGuess,
     feedback: state.feedback,
     guessedCorrectly: state.guessedCorrectly,
-    fewestGuesses: state.fewestGuesses
+    fewestGuesses: state.fewestGuesses,
+    guessAttempts: state.guessAttempts
   }
 };
 //making userGuess and feedback available through props in InputView

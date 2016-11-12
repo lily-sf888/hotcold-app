@@ -41,28 +41,27 @@ var reducers = function(state = initialState, action) {
 			}else if(difference > 1 && difference < 10) {
 			     feedback = "very hot";
 			}else if(difference === 0) {
-        //  trigger the lowest guess action
-
 
 				feedback = "Congrats, you guessed the right number!";
-          var fewestGuesses = state.allGuesses.length + 1;
+          var guessAttempts = state.allGuesses.length + 1;
           var guessedCorrectly = true;
 			}
-        return [feedback, fewestGuesses, guessedCorrectly];
+        return [feedback, difference, userGuess, guessAttempts, guessedCorrectly];
 
       }
-      var data = getFeedback(feedback, difference, userGuess);
+      var data = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
       var feedback = data[0];
-      var fewestGuesses = data[1];
-      var guessedCorrectly = data[2];
+      var difference = data[1];
+      var userGuess = data[2];
+      var guessAttempts = data[3];
+      var guessedCorrectly = data[4];
 
-console.log('data:', feedback, fewestGuesses, guessedCorrectly)
+console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorrectly)
         return Object.assign({}, state, {
           userGuess: userGuess,
           allGuesses: state.allGuesses.concat(userGuess),
-          guessAttempts: state.allGuesses.length + 1,
+          guessAttempts: guessAttempts,
           feedback: feedback,
-          fewestGuesses: fewestGuesses,
           guessedCorrectly: guessedCorrectly
         });
 
@@ -70,21 +69,20 @@ console.log('data:', feedback, fewestGuesses, guessedCorrectly)
 
      case actions.NEW_GAME:
 
-
         return Object.assign({}, state, {
           randomNum: Math.floor(Math.random() * 100),
           allGuesses: [],
           guessAttempts: 0,
-          feedback: 'Make your guess!'
-
+          feedback: 'Make your guess!',
+          fewestGuesses: state.fewestGuesses
         });
 
         break;
 
       case actions.FETCH_FEWEST_GUESSES:
-
+      console.log('from fewest guesses:', action.fewestGuesses);
         return Object.assign({}, state, {
-          fewestGuesses: state.fewestGuesses
+          fewestGuesses: action.fewestGuesses
         });
 
       case actions.FETCH_ERROR:
