@@ -1,5 +1,6 @@
 //every time our app wants to change the state of the app it should dispatch
 //an action, the actions are then handled by the reducer
+//using fetch method to make the ajax requests
 var isomorphicFetch = require('isomorphic-fetch');
 
 var ON_SUBMIT = 'ON_SUBMIT';
@@ -41,28 +42,14 @@ var fetchError = function(error) {
     };
 };
 
+//this fetch method sends a request to our GET endpoint
 var FETCH_GUESSES= 'FETCH_GUESSES';
 var fetchGuesses = function() {
+
   return function(dispatch) {
-  //var url = 'http://localhost:8080/fewest-guesses';
-  var url = new URL('http://localhost:8080/fewest-guesses')
 
-  // how to attach to req.body in fetch?
-
-
-    // return fetch('https://davidwalsh.name/submit', {
-  	//          method: 'post',
-  	//          body: {
-    //            fewestGuesses: guessAttempts
-    //          }
-    //        })
-
-
-
-  // params = {fewestGuesses: 88}
-  // Object.keys(params).forEach(function(key) {url.searchParams.append(key, params[key])})
-  return fetch(url)
-
+    var url = new URL('http://localhost:8080/fewest-guesses')
+    return fetch(url)
   .then(function(response) {
     if (response.status < 200 || response.status >= 300) {
       var error = new Error(response.statusText)
@@ -70,19 +57,16 @@ var fetchGuesses = function() {
       throw error;
     }
     return response;
-  })
-
+   })
   .then(function(response) {
     return response.json();
   })
-
   .then(function(data) {
     console.log("DATA", data);
     return dispatch(
       fetchFewestGuesses(data.fewestGuesses)
     );
   })
-
   .catch(function(error) {
     return dispatch(
       fetchError(error)
@@ -91,57 +75,38 @@ var fetchGuesses = function() {
  }
 };
 
+//this sends a request to our POST endpoint and updates the current state of fewestGuesses
 var SAVE_FEWEST_GUESSES = 'SAVE_FEWEST_GUESSES';
 var saveFewestGuesses = function(guessAttempts) {
 
   return function(dispatch) {
-  //var url = 'http://localhost:8080/fewest-guesses';
-  //var url = new URL('http://localhost:8080/fewest-guesses')
-  // change from get to post??
-  // how to attach to req.body in fetch?
 
-
-    // return fetch('https://davidwalsh.name/submit', {
-  	//          method: 'post',
-  	//          body: {
-    //            fewestGuesses: guessAttempts
-    //          }
-    //        })
-
-
-
-  return fetch('http://localhost:8080/fewest-guesses',
-  {
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  method: "POST",
-  body: JSON.stringify({fewestGuesses: guessAttempts})
-})
-
-  .then(function(response) {
-
-    if (response.ok) {
-
-      return response
-    }else{
-      console.log('not working')
-    }
-
-  })
-
-  .then(function(response) {
-    return response.json();
-  })
-
-  .then(function(data) {
-    console.log("DATA WORKS", data);
-    return dispatch(
-      fetchFewestGuesses(data.fewestGuesses)
+    return fetch('http://localhost:8080/fewest-guesses',
+    {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify({fewestGuesses: guessAttempts})
+    })
+    .then(function(response) {
+      if (response.status < 200 || response.status >= 300) {
+        var error = new Error(response.statusText)
+        error.response = response
+        throw error;
+      }
+      return response;
+     })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log("DATA WORKS", data);
+      return dispatch(
+        fetchFewestGuesses(data.fewestGuesses)
     );
   })
-
   .catch(function(error) {
     return dispatch(
       fetchError(error)

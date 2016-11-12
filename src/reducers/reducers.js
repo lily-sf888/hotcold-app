@@ -27,22 +27,23 @@ var reducers = function(state = initialState, action) {
       difference = Math.abs(randomNum - userGuess);
       console.log(randomNum);
     //get feedback to users how close their guess is
-    var getFeedback = function(feedback, difference, userGuess) {
-      if((isNaN(userGuess)) || userGuess > 100) {
-        alert('Please type in a number between 1 and 100');
-      }else if(difference > 50) {
-			     feedback = "ice cold";
-			}else if(difference > 30 && difference < 50 ) {
-			     feedback = "cold";
-			}else if(difference > 20 && difference < 30) {
-			     feedback = "warm";
-			}else if(difference > 10 && difference < 20) {
-			     feedback ="hot";
-			}else if(difference > 1 && difference < 10) {
-			     feedback = "very hot";
-			}else if(difference === 0) {
+      var getFeedback = function(feedback, difference, userGuess) {
+        if((isNaN(userGuess)) || userGuess > 100) {
+          alert('Please type in a number between 1 and 100');
+        }else if(difference > 50) {
+  			     feedback = "ice cold";
+  			}else if(difference > 30 && difference < 50 ) {
+  			     feedback = "cold";
+  			}else if(difference > 20 && difference < 30) {
+  			     feedback = "warm";
+  			}else if(difference > 10 && difference < 20) {
+  			     feedback ="hot";
+  			}else if(difference > 1 && difference < 10) {
+  			     feedback = "very hot";
+  			}else if(difference === 0) {
 
 				feedback = "Congrats, you guessed the right number!";
+
           var guessAttempts = state.allGuesses.length + 1;
           var guessedCorrectly = true;
 			}
@@ -56,14 +57,14 @@ var reducers = function(state = initialState, action) {
       var guessAttempts = data[3];
       var guessedCorrectly = data[4];
 
-console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorrectly)
-        return Object.assign({}, state, {
-          userGuess: userGuess,
-          allGuesses: state.allGuesses.concat(userGuess),
-          guessAttempts: guessAttempts,
-          feedback: feedback,
-          guessedCorrectly: guessedCorrectly
-        });
+      console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorrectly)
+      return Object.assign({}, state, {
+        userGuess: userGuess,
+        allGuesses: state.allGuesses.concat(userGuess),
+        guessAttempts: guessAttempts,
+        feedback: feedback,
+        guessedCorrectly: guessedCorrectly
+      });
 
         break;
 
@@ -80,7 +81,7 @@ console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorr
         break;
 
       case actions.FETCH_FEWEST_GUESSES:
-      console.log('from fewest guesses:', action.fewestGuesses);
+    
         return Object.assign({}, state, {
           fewestGuesses: action.fewestGuesses
         });
