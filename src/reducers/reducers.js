@@ -27,7 +27,7 @@ var reducers = function(state = initialState, action) {
       difference = Math.abs(randomNum - userGuess);
       console.log(randomNum);
     //get feedback to users how close their guess is
-      var getFeedback = function(feedback, difference, userGuess) {
+      var getFeedback = function(feedback, difference, userGuess, guessAttempts, guessedCorrectly) {
         if((isNaN(userGuess)) || userGuess > 100) {
           alert('Please type in a number between 1 and 100');
         }else if(difference > 50) {
@@ -81,7 +81,7 @@ var reducers = function(state = initialState, action) {
         break;
 
       case actions.FETCH_FEWEST_GUESSES:
-    
+
         return Object.assign({}, state, {
           fewestGuesses: action.fewestGuesses
         });

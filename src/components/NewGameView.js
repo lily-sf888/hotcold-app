@@ -9,7 +9,9 @@ var NewGame = React.createClass({
   },
   onClick: function() {
     this.props.dispatch(actions.newGame());
+    
   },
+
   render: function() {
     return (
         <nav>

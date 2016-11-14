@@ -8,7 +8,7 @@ var fewestGuesses = 99;
 app.use(cors());
 
 app.get('/fewest-guesses', function (req, res) {
-
+  
   fewestGuesses = fewestGuesses;
 
   res.json({fewestGuesses: fewestGuesses});
