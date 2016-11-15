@@ -26,7 +26,7 @@ var reducers = function(state = initialState, action) {
       var difference = difference;
       difference = Math.abs(randomNum - userGuess);
       console.log(randomNum);
-    //get feedback to users how close their guess is
+      //get feedback to users how close their guess is
       var getFeedback = function(feedback, difference, userGuess, guessAttempts, guessedCorrectly) {
         if((isNaN(userGuess)) || userGuess > 100) {
           alert('Please type in a number between 1 and 100');
@@ -49,19 +49,19 @@ var reducers = function(state = initialState, action) {
 			}
         // instead of returning an array return an object
         return [feedback, difference, userGuess, guessAttempts, guessedCorrectly];
-        // return {feedback, difference, userGuess, guessAttempts, guessedCorrectly}
+         //return {feedback, difference, userGuess, guessAttempts, guessedCorrectly}
 
       }
 
-      // var newState = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
-      var data = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
+       var newState = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
+      //var data = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
       // var feedback = data[0];
       // var difference = data[1];
       // var userGuess = data[2];
       var guessAttempts = 3;
       var guessedCorrectly = false;
 
-      // console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorrectly)
+       console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorrectly)
       // return Object.assign({}, state, {
       //   userGuess: userGuess,
       //   allGuesses: state.allGuesses.concat(userGuess),
