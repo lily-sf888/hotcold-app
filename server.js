@@ -8,9 +8,9 @@ var fewestGuesses = 99;
 app.use(cors());
 
 app.get('/fewest-guesses', function (req, res) {
-  
-  fewestGuesses = fewestGuesses;
 
+  fewestGuesses = fewestGuesses;
+  console.log("GET", fewestGuesses)
   res.json({fewestGuesses: fewestGuesses});
 })
 
@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 app.post('/fewest-guesses', function (req, res) {
 
   fewestGuesses = req.body.fewestGuesses;
+  console.log("POST", fewestGuesses)
   res.json({fewestGuesses: fewestGuesses});
 })
 

@@ -16,13 +16,12 @@ var onSubmit = function(userGuess, guessAttempts, feedback, allGuesses, guessedC
 };
 
 var NEW_GAME = 'NEW_GAME';
-var newGame = function(guessAttempts, feedback, allGuesses, fewestGuesses) {
+var newGame = function(guessAttempts, feedback, allGuesses) {
   return {
     type: 'NEW_GAME',
     guessAttempts: guessAttempts,
     feedback: feedback,
-    allGuesses: allGuesses,
-    fewestGuesses: fewestGuesses
+    allGuesses: allGuesses
   }
 };
 //action for getting the user with the fewest guesses

@@ -3,9 +3,8 @@ var NewGameView = require('../components/NewGameView');
 
 var mapStateToProps = function(state) {
   return {
-    fewestGuesses: state.fewestGuesses,
-    guessAttempts: state.guessAttempts
-
+    guessAttempts: state.guessAttempts,
+    fewestGuesses: state.fewestGuesses
   }
 };
 

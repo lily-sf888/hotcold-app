@@ -47,24 +47,29 @@ var reducers = function(state = initialState, action) {
           var guessAttempts = state.allGuesses.length + 1;
           var guessedCorrectly = true;
 			}
+        // instead of returning an array return an object
         return [feedback, difference, userGuess, guessAttempts, guessedCorrectly];
+        // return {feedback, difference, userGuess, guessAttempts, guessedCorrectly}
 
       }
-      var data = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
-      var feedback = data[0];
-      var difference = data[1];
-      var userGuess = data[2];
-      var guessAttempts = data[3];
-      var guessedCorrectly = data[4];
 
-      console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorrectly)
-      return Object.assign({}, state, {
-        userGuess: userGuess,
-        allGuesses: state.allGuesses.concat(userGuess),
-        guessAttempts: guessAttempts,
-        feedback: feedback,
-        guessedCorrectly: guessedCorrectly
-      });
+      // var newState = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
+      var data = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
+      // var feedback = data[0];
+      // var difference = data[1];
+      // var userGuess = data[2];
+      var guessAttempts = 3;
+      var guessedCorrectly = false;
+
+      // console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorrectly)
+      // return Object.assign({}, state, {
+      //   userGuess: userGuess,
+      //   allGuesses: state.allGuesses.concat(userGuess),
+      //   guessAttempts: guessAttempts,
+      //   feedback: feedback,
+      //   guessedCorrectly: guessedCorrectly
+      // });
+      return Object.assign({}, state, newState);
 
         break;
 
@@ -74,8 +79,8 @@ var reducers = function(state = initialState, action) {
           randomNum: Math.floor(Math.random() * 100),
           allGuesses: [],
           guessAttempts: 0,
-          feedback: 'Make your guess!',
-          fewestGuesses: state.fewestGuesses
+          feedback: 'Make your guess!'
+          // fewestGuesses: state.fewestGuesses
         });
 
         break;
