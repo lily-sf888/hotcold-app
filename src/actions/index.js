@@ -1,7 +1,6 @@
 //every time our app wants to change the state of the app it should dispatch
 //an action, the actions are then handled by the reducer
 //using fetch method to make the ajax requests
-var isomorphicFetch = require('isomorphic-fetch');
 
 var ON_SUBMIT = 'ON_SUBMIT';
 var onSubmit = function(userGuess, guessAttempts, feedback, allGuesses, guessedCorrectly ) {
@@ -24,6 +23,7 @@ var newGame = function(guessAttempts, feedback, allGuesses) {
     allGuesses: allGuesses
   }
 };
+
 //action for getting the user with the fewest guesses
 var FETCH_FEWEST_GUESSES = 'FETCH_FEWEST_GUESSES';
 var fetchFewestGuesses = function(fewestGuesses) {
@@ -61,7 +61,6 @@ var fetchGuesses = function() {
     return response.json();
   })
   .then(function(data) {
-    console.log("DATA", data);
     return dispatch(
       fetchFewestGuesses(data.fewestGuesses)
     );

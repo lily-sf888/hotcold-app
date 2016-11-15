@@ -7,7 +7,8 @@ var NewGame = React.createClass({
     this.props.dispatch(actions.fetchGuesses(this.props.fewestGuesses));
   },
 
-  onClick: function() {
+  onClick: function(event) {
+    event.preventDefault()
     this.props.dispatch(actions.newGame());
   },
 

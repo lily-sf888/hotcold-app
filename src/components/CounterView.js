@@ -5,11 +5,15 @@ var Counter = React.createClass({
   render: function() {
     //accessing array allGuesses through props, using map to render li elements
     var guesses = this.props.allGuesses.map(function(num) {
-      if (isNaN(num)) { return; } else {
-      return <li key={num.toString()}>{num}</li>
+      if (isNaN(num)) {
+        return ''
+      }
+
+      else {
+        return <li key={num.toString()}>{num}</li>
       }
     })
-    
+
     return (
       <div>
         <p>Guess #<span id="count">{this.props.allGuesses.length}</span>!</p>

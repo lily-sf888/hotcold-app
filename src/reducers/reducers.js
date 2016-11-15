@@ -1,6 +1,4 @@
 var actions = require('../actions/index');
-var fetchFewestGuesses = require('../actions/index');
-var fetchError = require('../actions/index');
 
 //setting initial state for the reducers
 var initialState = {
@@ -20,70 +18,85 @@ var reducers = function(state = initialState, action) {
     case actions.ON_SUBMIT:
 
       var userGuess = action.userGuess;
+      // eslint-disable-next-line
       userGuess = parseInt(userGuess);
+      var guessedCorrectly = state.guessedCorrectly;
       var randomNum = state.randomNum;
-      var feedback = feedback;
-      var difference = difference;
-      difference = Math.abs(randomNum - userGuess);
-      console.log(randomNum);
-    //get feedback to users how close their guess is
-      var getFeedback = function(feedback, difference, userGuess, guessAttempts, guessedCorrectly) {
+      var guessAttempts = state.allGuesses.length + 1;
+      var allGuesses = state.allGuesses.slice()
+      allGuesses.push(userGuess)
+      // actually do not need to track this here
+      var feedback = state.feedback;
+      var difference = Math.abs(randomNum - userGuess);
+
+      //get feedback to users how close their guess is
+      var getFeedback = function(feedback, difference, userGuess) {
         if((isNaN(userGuess)) || userGuess > 100) {
           alert('Please type in a number between 1 and 100');
-        }else if(difference > 50) {
+        }
+
+        else if(difference > 50) {
   			     feedback = "ice cold";
-  			}else if(difference > 30 && difference < 50 ) {
+  			}
+
+        else if(difference > 30 && difference < 50 ) {
   			     feedback = "cold";
-  			}else if(difference > 20 && difference < 30) {
+  			}
+
+        else if(difference > 20 && difference < 30) {
   			     feedback = "warm";
-  			}else if(difference > 10 && difference < 20) {
+  			}
+
+        else if(difference > 10 && difference < 20) {
   			     feedback ="hot";
-  			}else if(difference > 1 && difference < 10) {
+  			}
+
+        else if(difference > 1 && difference < 10) {
   			     feedback = "very hot";
-  			}else if(difference === 0) {
+  			}
 
-				feedback = "Congrats, you guessed the right number!";
+        else if(difference === 0) {
 
-          var guessAttempts = state.allGuesses.length + 1;
-          var guessedCorrectly = true;
-			}
-        // instead of returning an array return an object
-        return [feedback, difference, userGuess, guessAttempts, guessedCorrectly];
-        // return {feedback, difference, userGuess, guessAttempts, guessedCorrectly}
+				  feedback = "Congrats, you guessed the right number!";
+          guessedCorrectly = true;
+			  }
 
+        return {
+          feedback,
+          userGuess,
+          allGuesses,
+          guessAttempts,
+          guessedCorrectly
+        };
       }
 
-      // var newState = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
-      var data = getFeedback(feedback, difference, userGuess, guessAttempts, guessedCorrectly);
-      // var feedback = data[0];
-      // var difference = data[1];
-      // var userGuess = data[2];
-      var guessAttempts = 3;
-      var guessedCorrectly = false;
+      var data = getFeedback(feedback, difference, userGuess);
 
-      // console.log('data:', feedback, difference, userGuess, guessAttempts, guessedCorrectly)
-      // return Object.assign({}, state, {
-      //   userGuess: userGuess,
-      //   allGuesses: state.allGuesses.concat(userGuess),
-      //   guessAttempts: guessAttempts,
-      //   feedback: feedback,
-      //   guessedCorrectly: guessedCorrectly
-      // });
-      return Object.assign({}, state, newState);
 
-        break;
+      var finalData = Object.assign({}, state, data);
+
+      console.log("FINALDATA", finalData)
+
+
+      return finalData
+
 
      case actions.NEW_GAME:
 
-        return Object.assign({}, state, {
+        var newGameObj = Object.assign({}, state, {
           randomNum: Math.floor(Math.random() * 100),
           allGuesses: [],
           guessAttempts: 0,
-          feedback: 'Make your guess!'
+          userGuess: 0,
+          feedback: 'Make your guess!',
+          guessedCorrectly: false
           // fewestGuesses: state.fewestGuesses
         });
 
-        break;
+        console.log("NEWGAMEOBJ", newGameObj)
+
+        return newGameObj
+
 
       case actions.FETCH_FEWEST_GUESSES:
 
