@@ -41,7 +41,8 @@ var fetchError = function(error) {
     };
 };
 
-//this fetch method sends a request to our GET endpoint
+//this fetch method sends a request to our GET endpoint and brings back
+//fewestGuesses data
 var FETCH_GUESSES= 'FETCH_GUESSES';
 var fetchGuesses = function() {
 

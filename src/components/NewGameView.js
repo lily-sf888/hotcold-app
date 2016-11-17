@@ -1,17 +1,16 @@
 var React = require('react');
 var actions = require('../actions/index');
 
-
+//when the page loads fetch method fetchGuesses is triggered
 var NewGame = React.createClass({
   componentDidMount: function() {
     this.props.dispatch(actions.fetchGuesses(this.props.fewestGuesses));
   },
-
+  //this will set the different values so that user can start a new game
   onClick: function(event) {
     event.preventDefault()
     this.props.dispatch(actions.newGame());
   },
-
   render: function() {
     return (
         <nav>

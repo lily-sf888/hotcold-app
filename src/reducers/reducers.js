@@ -3,7 +3,7 @@ var actions = require('../actions/index');
 //setting initial state for the reducers
 var initialState = {
   allGuesses: [],
-  randomNum: Math.floor(Math.random() * 100),
+  randomNum: Math.floor((Math.random() * 100) + 1),
   userGuess: 0,
   feedback: 'Make your guess!',
   guessAttempts: 0,
@@ -18,7 +18,6 @@ var reducers = function(state = initialState, action) {
     case actions.ON_SUBMIT:
 
       var userGuess = action.userGuess;
-      // eslint-disable-next-line
       userGuess = parseInt(userGuess);
       var guessedCorrectly = state.guessedCorrectly;
       var randomNum = state.randomNum;
@@ -30,7 +29,7 @@ var reducers = function(state = initialState, action) {
       var difference = Math.abs(randomNum - userGuess);
 
       //get feedback to users how close their guess is
-      var getFeedback = function(feedback, difference, userGuess) {
+      var getFeedback = function(difference, userGuess) {
 
         if((isNaN(userGuess)) || userGuess > 100) {
           alert('Please type in a number between 1 and 100');
@@ -57,8 +56,6 @@ var reducers = function(state = initialState, action) {
   			}
 
         else if(difference === 0) {
-
-
 				  feedback = "Congrats, you guessed the right number!";
           guessedCorrectly = true;
 			  }
@@ -72,7 +69,7 @@ var reducers = function(state = initialState, action) {
         };
       }
 
-      var data = getFeedback(feedback, difference, userGuess);
+      var data = getFeedback(difference, userGuess);
 
       var finalData = Object.assign({}, state, data);
 
@@ -83,7 +80,7 @@ var reducers = function(state = initialState, action) {
      case actions.NEW_GAME:
 
         var newGameObj = Object.assign({}, state, {
-          randomNum: Math.floor(Math.random() * 100),
+          randomNum: Math.floor((Math.random() * 100) + 1),
           allGuesses: [],
           guessAttempts: 0,
           userGuess: 0,
