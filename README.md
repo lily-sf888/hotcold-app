@@ -33,5 +33,11 @@ In order for our components to have access to the current states, we use the
 `mapStateToProps` function to turn our states into props which then can be
 accessed by our components.
 
+In the last part we added a server side to our app, which keeps track of which
+user had the fewest amount of guesses. Our GET endpoint gets triggered when the
+game first loads. The initial value for fewestGuesses is set to 99. When the
+user's guess is lower than the current state of fewestGuesses, the POST request
+sends a response to the front to save and update the current lowest number of
+guesses.
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
