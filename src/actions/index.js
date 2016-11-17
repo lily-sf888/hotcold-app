@@ -4,6 +4,7 @@
 
 var ON_SUBMIT = 'ON_SUBMIT';
 var onSubmit = function(userGuess, guessAttempts, feedback, allGuesses, guessedCorrectly ) {
+
   return {
     type: 'ON_SUBMIT',
     userGuess: userGuess,
@@ -16,20 +17,25 @@ var onSubmit = function(userGuess, guessAttempts, feedback, allGuesses, guessedC
 
 var NEW_GAME = 'NEW_GAME';
 var newGame = function(guessAttempts, feedback, allGuesses) {
+  var randomNum = Math.floor((Math.random() * 100) + 1)
+
   return {
     type: 'NEW_GAME',
+    randomNum: randomNum,
     guessAttempts: guessAttempts,
     feedback: feedback,
     allGuesses: allGuesses
   }
 };
 
-//action for getting the user with the fewest guesses
 var FETCH_FEWEST_GUESSES = 'FETCH_FEWEST_GUESSES';
 var fetchFewestGuesses = function(fewestGuesses) {
+  var randomNum = Math.floor((Math.random() * 100) + 1)
+
   return {
     type: 'FETCH_FEWEST_GUESSES',
-    fewestGuesses: fewestGuesses
+    fewestGuesses: fewestGuesses,
+    randomNum: randomNum
   }
 };
 
@@ -101,9 +107,8 @@ var saveFewestGuesses = function(guessAttempts) {
       return response.json();
     })
     .then(function(data) {
-      console.log("DATA WORKS", data);
       return dispatch(
-        fetchFewestGuesses(data.fewestGuesses)
+      fetchFewestGuesses(data.fewestGuesses)
     );
   })
   .catch(function(error) {

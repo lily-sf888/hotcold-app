@@ -3,7 +3,7 @@ var actions = require('../actions/index');
 //setting initial state for the reducers
 var initialState = {
   allGuesses: [],
-  randomNum: Math.floor((Math.random() * 100) + 1),
+  randomNum: 0,
   userGuess: 0,
   feedback: 'Make your guess!',
   guessAttempts: 0,
@@ -24,10 +24,9 @@ var reducers = function(state = initialState, action) {
       var guessAttempts = state.allGuesses.length + 1;
       var allGuesses = state.allGuesses.slice()
       allGuesses.push(userGuess)
-      // actually do not need to track this here
       var feedback = state.feedback;
       var difference = Math.abs(randomNum - userGuess);
-
+      
       //get feedback to users how close their guess is
       var getFeedback = function(difference, userGuess) {
 
@@ -73,31 +72,26 @@ var reducers = function(state = initialState, action) {
 
       var finalData = Object.assign({}, state, data);
 
-      console.log("FINALDATA", finalData)
-
       return finalData
 
      case actions.NEW_GAME:
 
         var newGameObj = Object.assign({}, state, {
-          randomNum: Math.floor((Math.random() * 100) + 1),
+          randomNum: action.randomNum,
           allGuesses: [],
           guessAttempts: 0,
-          userGuess: 0,
+          userGuess: action.userGuess,
           feedback: 'Make your guess!',
           guessedCorrectly: false
-          // fewestGuesses: state.fewestGuesses
         });
 
-        console.log("NEWGAMEOBJ", newGameObj)
-
         return newGameObj
-
 
       case actions.FETCH_FEWEST_GUESSES:
 
         return Object.assign({}, state, {
-          fewestGuesses: action.fewestGuesses
+          fewestGuesses: action.fewestGuesses,
+          randomNum: action.randomNum
         });
 
       case actions.FETCH_ERROR:
