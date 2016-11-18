@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.static('build'))
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
+  res.sendFile('./build/index.html'));
 })
 
 app.get('/fewest-guesses', function (req, res) {
