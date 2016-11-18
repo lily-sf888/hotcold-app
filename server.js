@@ -9,6 +9,10 @@ app.use(cors());
 
 app.use(express.static('build'))
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, './build', 'index.html'));
+})
+
 app.get('/fewest-guesses', function (req, res) {
 
   res.json({fewestGuesses: fewestGuesses});
