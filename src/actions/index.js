@@ -47,6 +47,16 @@ var fetchError = function(error) {
     };
 };
 
+var url;
+
+if(process.env.NODE_ENV === 'development') {
+	url = new URL('http://localhost:8080/fewest-guesses')
+}
+
+else {
+	url = '/fewest-guesses'
+}
+
 //this fetch method sends a request to our GET endpoint and brings back
 //fewestGuesses data
 var FETCH_GUESSES= 'FETCH_GUESSES';
