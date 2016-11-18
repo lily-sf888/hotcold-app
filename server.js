@@ -7,13 +7,6 @@ var fewestGuesses = 99;
 
 app.use(cors());
 
-app.get('*',function(req,res,next){
-  if(req.headers['x-forwarded-proto']!='https')
-    res.redirect('https://localhost:8080/'+req.url)
-  else
-    next() /* Continue to other routes if we're not redirecting */
-})
-
 app.use(express.static('build'))
 
 app.get('/fewest-guesses', function (req, res) {
