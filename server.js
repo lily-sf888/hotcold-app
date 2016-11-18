@@ -7,8 +7,9 @@ var fewestGuesses = 99;
 
 app.use(cors());
 
+app.use(express.static('build'))
+
 app.get('/fewest-guesses', function (req, res) {
-  fewestGuesses = fewestGuesses;
 
   res.json({fewestGuesses: fewestGuesses});
 })
@@ -16,6 +17,7 @@ app.get('/fewest-guesses', function (req, res) {
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+
 app.use(bodyParser.json());
 
 app.post('/fewest-guesses', function (req, res) {
