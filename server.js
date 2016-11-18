@@ -16,7 +16,6 @@ app.get('/fewest-guesses', function (req, res) {
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
 app.use(bodyParser.json());
 
 app.post('/fewest-guesses', function (req, res) {
