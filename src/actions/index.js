@@ -54,7 +54,7 @@ var fetchGuesses = function() {
 
   return function(dispatch) {
 
-    var url = new URL('http://localhost:8080/fewest-guesses')
+    var url = new URL('https://localhost:8080/fewest-guesses')
     return fetch(url)
   .then(function(response) {
     if (response.status < 200 || response.status >= 300) {
@@ -86,7 +86,7 @@ var saveFewestGuesses = function(guessAttempts) {
 
   return function(dispatch) {
 
-    return fetch('http://localhost:8080/fewest-guesses',
+    return fetch('https://localhost:8080/fewest-guesses',
     {
     headers: {
       'Accept': 'application/json',
