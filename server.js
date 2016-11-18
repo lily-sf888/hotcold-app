@@ -7,7 +7,7 @@ var fewestGuesses = 99;
 
 app.use(cors());
 
-app.use(express.static('build'))
+// app.use(express.static('build'))
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, './build', 'index.html'));
