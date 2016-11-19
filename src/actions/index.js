@@ -64,7 +64,6 @@ var fetchGuesses = function() {
 
   return function(dispatch) {
 
-    var url = new URL('https://localhost:8080/fewest-guesses')
     return fetch(url)
   .then(function(response) {
     if (response.status < 200 || response.status >= 300) {
