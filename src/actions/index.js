@@ -95,7 +95,7 @@ var saveFewestGuesses = function(guessAttempts) {
 
   return function(dispatch) {
 
-    return fetch('https://localhost:8080/fewest-guesses',
+    return fetch(url,
     {
     headers: {
       'Accept': 'application/json',
