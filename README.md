@@ -9,8 +9,8 @@
 
 
 One of the main appeals using Redux is that all the states of your components
-can be managed in one place which is the store.  In our Hot Cold App we are
-using Redux which is divided into different parts mainly consisting of actions,
+can be managed in one place which is the store.  In our [Hot Cold App](https://hotcold-redux.herokuapp.com/) 
+we are using Redux which is divided into different parts mainly consisting of actions,
 reducers, react components and the store.
 
 Actions are objects which contain a type and the action's payload.  In our app
