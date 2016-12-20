@@ -6,10 +6,11 @@
 * Redux
 * Babel
 * Webpack
-
+* Travis CI
+* Heroku
 
 One of the main appeals using Redux is that all the states of your components
-can be managed in one place which is the store.  In our [Hot Cold App](https://hotcold-redux.herokuapp.com/) 
+can be managed in one place which is the store.  In our [Hot Cold App](https://hotcold-redux.herokuapp.com/)
 we are using Redux which is divided into different parts mainly consisting of actions,
 reducers, react components and the store.
 
