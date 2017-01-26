@@ -1,4 +1,4 @@
-##Hot Cold App in React and Redux
+##Hot Cold Guessing Game in React and Redux
 
 ###Tech Stack
 
@@ -6,7 +6,6 @@
 * Redux
 * Babel
 * Webpack
-* Travis CI
 * Heroku
 
 One of the main appeals using Redux is that all the states of your components
