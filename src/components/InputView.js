@@ -20,7 +20,11 @@ var Input = React.createClass ({
      var userGuess = this.refs.userGuess.value;
      this.props.dispatch(actions.onSubmit(userGuess));
      this.refs.userGuess.value = '';
-    },
+   },
+  componentDidMount() {
+    this.refs.userGuess.focus();
+  }
+
    render: function() {
      return (
        <div>
