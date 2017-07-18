@@ -1,6 +1,6 @@
-##Hot Cold Guessing Game in React and Redux
+## Hot Cold Guessing Game in React and Redux
 
-###Tech Stack
+### Tech Stack
 
 * React
 * Redux
